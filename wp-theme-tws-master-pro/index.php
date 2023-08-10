@@ -8,21 +8,17 @@ header("Content-Type: application/json");
 
 /* 
  *
- * Theme Details
+ * Theme Details and github
  * 
  *  */
-$details_url = 'https://asifulmamun.info.bd'; // Updated Theme Details
-$download_url = "https://github.com/asifulmamun/wp-theme_smafolk.is/archive/refs/tags/3.2.0.zip"; // Theme Update Link
+$git = "";
+if($git == ""){
+    require_once './token.php';
+    $access_token = $git_access_token; // api token - github developer token
+}
 
-
-
-
-
-//  GITHUB ACCESS
-$access_token = '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'; // api token - github developer token
 $repository = 'asifulmamun/wp-theme_smafolk.is'; // username/repository name
 $branch = 'master'; // Replace with your main branch name
-
 
 
 
@@ -71,7 +67,11 @@ if ($latest_commit_data) {
  * 
  * 
  */
-function theme_update_data($latest_commit_version, $download_url, $details_url){
+function theme_update_data($latest_commit_version, $repository){
+
+    $details_url = 'https://asifulmamun.info.bd'; // Updated Theme Details
+    $download_url = "https://github.com/$repository/refs/tags/v$latest_commit_version.zip"; // Theme Update Link
+
 
     // Create an associative array with the desired JSON structure
     $response_api = array(
