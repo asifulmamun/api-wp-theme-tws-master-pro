@@ -19,7 +19,7 @@ $download_url = "https://github.com/asifulmamun/wp-theme_smafolk.is/archive/refs
 
 
 //  GITHUB ACCESS
-$access_token = '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'; // api token - github developer token
+$access_token = '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'; // api token - github developer token
 $repository = 'asifulmamun/wp-theme_smafolk.is'; // username/repository name
 $branch = 'master'; // Replace with your main branch name
 
