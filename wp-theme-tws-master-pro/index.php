@@ -52,7 +52,7 @@ if ($latest_commit_data) {
 
     
     // echo $latest_commit_version;
-    theme_update_data($latest_commit_version, $download_url, $details_url);
+    theme_update_data($latest_commit_version, $repository);
 
 }
 
