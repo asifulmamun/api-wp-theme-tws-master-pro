@@ -70,7 +70,7 @@ if ($latest_commit_data) {
 function theme_update_data($latest_commit_version, $repository){
 
     $details_url = 'https://asifulmamun.info.bd'; // Updated Theme Details
-    $download_url = "https://github.com/$repository/refs/tags/v$latest_commit_version.zip"; // Theme Update Link
+    $download_url = "https://github.com/$repository/archive/refs/tags/v$latest_commit_version.zip"; // Theme Update Link
 
 
     // Create an associative array with the desired JSON structure
