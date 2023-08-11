@@ -17,8 +17,8 @@ if($git == ""){
     $access_token = $git_access_token; // api token - github developer token
 }
 
-$repository = 'asifulmamun/wp-theme_smafolk.is'; // username/repository name
-$branch = 'master'; // Replace with your main branch name
+$repository = 'asifulmamun/tws'; // username/repository name
+$branch = 'main'; // Replace with your main branch name
 
 
 
@@ -48,7 +48,7 @@ if ($latest_commit_data) {
     // Extract version from commit message
     $commit_message = $latest_commit_data['commit']['commit']['message'];
     preg_match('/Version: v?(\d+\.\d+\.\d+)/', $commit_message, $matches);
-    $latest_commit_version = isset($matches[1]) ? $matches[1] : 'Unknown';
+    $latest_commit_version = isset($matches[1]) ? $matches[1] : '1.0.0';
 
     
     // echo $latest_commit_version;
@@ -69,7 +69,7 @@ if ($latest_commit_data) {
  */
 function theme_update_data($latest_commit_version, $repository){
 
-    $details_url = 'https://asifulmamun.info.bd'; // Updated Theme Details
+    $details_url = "https://github.com/$repository"; // Updated Theme Details
     $download_url = "https://github.com/$repository/archive/refs/tags/v$latest_commit_version.zip"; // Theme Update Link
 
 
