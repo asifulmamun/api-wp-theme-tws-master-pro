@@ -27,11 +27,14 @@ $branch = 'main'; // Replace with your main branch name
  *
  *  Accessing and Geather Information
  *  */
-$url = "https://api.github.com/repos/$repository/branches/$branch";
+$url = "https://api.github.com/repos/$repository/releases/latest";
+
 
 $headers = array(
-    'Authorization: token ' . $access_token,
-    'User-Agent: TWS MASTER PRO' // Replace with a relevant name for your application
+    "Accept: application/vnd.github+json",
+    "Authorization: Bearer $access_token",
+    "X-GitHub-Api-Version: 2022-11-28",
+    "User-Agent: TWS MASTER PRO", // Replace with a relevant name for your application
 );
 
 $ch = curl_init();
@@ -46,14 +49,17 @@ $latest_commit_data = json_decode($response, true);
 if ($latest_commit_data) {
     
     // Extract version from commit message
-    $commit_message = $latest_commit_data['commit']['commit']['message'];
-    preg_match('/Version: v?(\d+\.\d+\.\d+)/', $commit_message, $matches);
+    $commit_message = $latest_commit_data["tag_name"];
+    preg_match('/v?(\d+\.\d+\.\d+)/', $commit_message, $matches);
     $latest_commit_version = isset($matches[1]) ? $matches[1] : '1.0.0';
 
-    
-    // echo $latest_commit_version;
     theme_update_data($latest_commit_version, $repository);
-
+    
+    // test response
+    // echo $latest_commit_data["tag_name"];
+    // echo '<pre>';
+    // var_dump($latest_commit_data);
+    // echo '</pre>';
 }
 
 
